@@ -1,0 +1,41 @@
+herfrom telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
+
+# Replace with your own bot token
+TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'8323412368:AAFT1cc33fSKCIMe01yNzU27aqIN6IDzFTc
+#YOUR_TELEGRAM_ID=-1002606673021
+#REPLACE WITH YOUR TELEGRAM ID =8024801118
+# /start command handler
+def start(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text(
+        'Hello! I can help you show your Free Fire profile information.'
+    )
+
+# /profile command handler (example)
+def profile(update: Update, context: CallbackContext) -> None:
+    # You can modify this with real Free Fire profile data if available
+    update.message.reply_text(
+        '🎮 Free Fire Profile:\n\n'
+        '👤 Name: JohnDoe\n'
+        '🏅 Level: 50\n'
+        '🎖️ Rank: Gold\n'
+        '🔥 K/D Ratio: 3.5'
+    )
+
+# Main function to run the bot
+def main() -> None:
+    updater = Updater(TOKEN)
+
+    # Get the dispatcher to register handlers
+    dispatcher = updater.dispatcher
+
+    # Register the command handlers
+    dispatcher.add_handler(CommandHandler('start', start))
+    dispatcher.add_handler(CommandHandler('profile', profile))
+
+    # Start the bot
+    updater.start_polling()
+    updater.idle()
+
+if __name__ == '__main__':
+    main()
